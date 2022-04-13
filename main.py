@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from utils import get_posts_all, get_posts_by_user, get_comments_by_post_id, get_post,search_for_posts, search_for_post
+from utils import get_posts_all, get_posts_by_user, get_comments_by_post_id, get_post,search_for_posts
 app = Flask(__name__)
 
 @app.route("/")
