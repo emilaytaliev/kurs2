@@ -51,7 +51,7 @@ def get_comments_by_post_id(post_id):
 #возвращает список постов по ключевому слову
 def search_for_posts(query):
     all_posts = [x for x in load_post() if query in x['content']]
-    return all_posts
+    return all_posts[:10]
 
 
 #возвращает один пост по его идентификатору
