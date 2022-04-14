@@ -30,4 +30,4 @@ def search():
 
 
 
-app.run(debug=True)
+app.run()
