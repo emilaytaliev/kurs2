@@ -3,14 +3,15 @@ import json
 
 #Посты вместе с информацией
 def load_post():
-    with open('data/data.json', 'r', encoding='utf-8') as file:
+    with open('./data/data.json', 'r', encoding='utf-8') as file:
         posts = json.load(file)
     return posts
 
 
+
 #комментарий
 def load_comment():
-    with open('data/comments.json', 'r', encoding='utf-8') as file:
+    with open('./data/comments.json', 'r', encoding='utf-8') as file:
         comment = json.load(file)
     return comment
 

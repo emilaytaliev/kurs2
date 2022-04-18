@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from utils import get_posts_all, get_posts_by_user, get_comments_by_post_id, get_post,search_for_posts
+from utils import load_post, get_posts_by_user
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -29,5 +31,22 @@ def search():
 
 
 
+@app.route('/api/posts')
+def api_posts():
+    """Вывод всех постов в формате JSON"""
+    posts = load_post()
+    return jsonify(posts)
 
-app.run()
+
+@app.route('/api/post/<int:uid>')
+def api_post(uid):
+    """Вывод одного поста в формате JSON"""
+    post = get_posts_by_user(uid)
+    return jsonify(post)
+
+
+
+app.config['JSON_AS_ASCII'] = False
+
+if __name__ == '__main__':
+    app.run()
