@@ -4,6 +4,9 @@ from utils import load_post, get_posts_by_user
 
 app = Flask(__name__)
 
+app.config['JSON_AS_ASCII'] = False
+
+
 @app.route("/")
 def index():
     posts = get_posts_all()
@@ -29,7 +32,7 @@ def search():
     posts = search_for_posts(search_by)
     return render_template('search.html', search_by=search_by, posts=posts, len=len(posts))
 
-@app.route('/api/posts')
+@app.route('/api/posts/')
 def api_posts():
     """Вывод всех постов в формате JSON"""
     posts = load_post()
@@ -44,7 +47,6 @@ def api_post(uid):
 
 
 
-app.config['JSON_AS_ASCII'] = False
 
 if __name__ == '__main__':
     app.run()

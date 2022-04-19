@@ -1,6 +1,5 @@
 import pytest
 from app import app
-
 data = [
     {
         "poster_name": "leo",
@@ -18,20 +17,18 @@ def test_get_all_json():
     response = app.test_client().get('/api/posts/')
     assert type(response.json) == list, 'Неверный тип данных при получении всех постов'
 
-def test_get_keywords_all_json(self):
+def test_get_keywords_all_json():
     resource = app.test_client().get('/api/posts/')
     keys_resource = resource.json[0].keys()
     key_json_file = data[0].keys()
     assert keys_resource == key_json_file, 'В запросе неверный список ключей для всех постов'
 
-def test_get_one_json(self):
-    resource = app.test_client().get('/api/posts/1')
-    assert type(resource.json) == dict, 'Неверный тип данных при получении одного поста'
+def test_get_one_json():
+    resource = app.test_client().get('/api/post/1')
+    assert type(resource.json) == list, 'Неверный тип данных при получении одного поста'
 
-def test_get_keywords_one_json(self):
-    resource = app.test_client().get('/api/posts/1')
-    keys_resource = resource.json.keys()
+def test_get_keywords_one_json():
+    resource = app.test_client().get('/api/post/1')
+    keys_resource = resource.json[0].keys()
     keys_from_json_file = data[0].keys()
     assert keys_resource == keys_from_json_file, 'В запросе неверный список ключей для одного поста'
-
-
