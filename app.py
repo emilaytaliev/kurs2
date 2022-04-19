@@ -10,10 +10,10 @@ def index():
     return render_template('index.html', posts=posts, len=len(posts))
 
 
-@app.route("/post/<int:name>")
-def post(name):
-    posts = get_posts_by_user(name)
-    comment = get_comments_by_post_id(name)
+@app.route("/post/<int:id>")
+def post(id):
+    posts = get_posts_by_user(id)
+    comment = get_comments_by_post_id(id)
     return render_template('post.html', posts=posts, len=len(comment), comment=comment)
 
 
@@ -28,8 +28,6 @@ def search():
     search_by = request.args.get("s")
     posts = search_for_posts(search_by)
     return render_template('search.html', search_by=search_by, posts=posts, len=len(posts))
-
-
 
 @app.route('/api/posts')
 def api_posts():
